@@ -1,0 +1,140 @@
+openapi: 3.0.1
+info:
+  title: Basketball API Plugin
+  description: A plugin that allows the user to interact with basketball player data and the balldontlie API using ChatGPT.
+  version: "v1"
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/searchPlayer/{name}:
+    get:
+      operationId: searchPlayer
+      summary: Search for a basketball player
+      parameters:
+        - name: name
+          in: path
+          description: Name of the player to search for
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/searchPlayerResponse"
+  /api/getPlayerStats:
+    post:
+      operationId: getPlayerStats
+      summary: Get stats of a basketball player
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/getPlayerStatsRequest"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getPlayerStatsResponse"
+  /player/fetchMyTeam:
+    get:
+      operationId: fetchMyTeam
+      summary: Fetch the user's basketball team
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/fetchMyTeamResponse"
+  /player/createPlayer:
+    post:
+      operationId: createPlayer
+      summary: Create a new player in the user's basketball team
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createPlayerRequest"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/createPlayerResponse"
+components:
+  schemas:
+    searchPlayerResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        payload:
+          type: object
+    getPlayerStatsRequest:
+      type: object
+      properties:
+        dates:
+          type: array
+          items:
+            type: string
+        seasons:
+          type: array
+          items:
+            type: integer
+        player_ids:
+          type: array
+          items:
+            type: integer
+        game_ids:
+          type: array
+          items:
+            type: integer
+        postseason:
+          type: boolean
+        start_date:
+          type: string
+        end_date:
+          type: string
+    getPlayerStatsResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        payload:
+          type: object
+    fetchMyTeamResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        payload:
+          type: array
+          items:
+            $ref: "#/components/schemas/Player"
+    createPlayerRequest:
+      type: object
+      properties:
+        name:
+          type: string
+    createPlayerResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        payload:
+          type: string
+    Player:
+      type: object
+      properties:
+        Name:
+          type: string
+        Id:
+          type: string
+        FantasyTeam:
+          type: string

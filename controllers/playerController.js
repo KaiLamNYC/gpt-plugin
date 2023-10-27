@@ -2,17 +2,24 @@ const Player = require("../models/playerModel");
 
 async function fetchMyTeam(req, res) {
 	try {
-		let result = await Player.find({});
+		const result = await Player.find({});
 
-		res.json({
-			message: "success",
+		if (!result) {
+			return res.status(404).json({
+				message: "No players found",
+				payload: [],
+			});
+		}
+
+		res.status(200).json({
+			message: "Success",
 			payload: result,
 		});
 	} catch (err) {
-		console.log("error getting all players");
-		res.json({
-			message: "failure",
-			payload: err,
+		console.error("Error getting all players:", err);
+		res.status(500).json({
+			message: "Failure",
+			payload: `Failure to return all players: ${err}`,
 		});
 	}
 }

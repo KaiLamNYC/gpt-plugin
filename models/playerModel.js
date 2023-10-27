@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-// const Schema = mongoose.Schema;
-
 const playerSchema = new mongoose.Schema({
 	Name: {
 		type: String,

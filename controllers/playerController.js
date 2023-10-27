@@ -25,7 +25,6 @@ async function createPlayer(req, res) {
 			Name: name,
 		});
 
-		// await newPlayer.save();
 		res.json({
 			message: "success",
 			payload: name,

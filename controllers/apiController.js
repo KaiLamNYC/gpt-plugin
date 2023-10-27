@@ -1,5 +1,6 @@
 const axios = require("axios");
 
+//GET PLAYERS STATS
 async function getPlayerStats(req, res) {
 	try {
 		const queryParams = {
@@ -28,7 +29,6 @@ async function getPlayerStats(req, res) {
 		});
 	}
 }
-// https://www.balldontlie.io/api/v1/stats?start_date=2023-10-26&end_date=2023-10-26&player_ids[]=15&player_ids[]=278
 
 //SIMPLE FUNCTION TO SEARCH FOR PLAYER
 async function searchPlayer(req, res) {

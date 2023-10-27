@@ -17,6 +17,28 @@ async function fetchMyTeam(req, res) {
 	}
 }
 
+async function createPlayer(req, res) {
+	try {
+		const { name } = req.body;
+
+		await Player.create({
+			Name: name,
+		});
+
+		// await newPlayer.save();
+		res.json({
+			message: "success",
+			payload: name,
+		});
+	} catch (err) {
+		res.json({
+			message: "failure",
+			payload: `create new player error: ${err}`,
+		});
+	}
+}
+
 module.exports = {
 	fetchMyTeam,
+	createPlayer,
 };

@@ -5,7 +5,7 @@ const connectToMongoDB = require("./database/mongodb");
 const PORT = 3000;
 //ROUTER
 const apiRouter = require("./routes/apiRouter");
-// const playerRouter = require("./routes/playerRouter");
+const playerRouter = require("./routes/playerRouter");
 
 app.use(logger("dev"));
 
@@ -15,7 +15,7 @@ app.use(express.json());
 //ROUTE FOR ACCESSING BALLDONTLIE API
 app.use("/api", apiRouter);
 //ROUTE FOR ACCESSING PLAYER ROUTE
-// app.use("/player", playerRouter);
+app.use("/player", playerRouter);
 
 app.listen(PORT, () => {
 	console.log(`server running on port ${PORT}`);

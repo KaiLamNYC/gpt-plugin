@@ -1,21 +1,22 @@
 const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
 const playerSchema = new mongoose.Schema({
 	Name: {
 		type: String,
 		required: true,
-		unique: true,
+		unique: false,
 	},
 	Id: {
 		type: String,
 		required: false,
-		unique: true,
+		unique: false,
 	},
 	FantasyTeam: {
 		type: String,
 		required: false,
+		unique: false,
 	},
 });
 

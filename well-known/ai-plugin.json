@@ -9,7 +9,7 @@
 	},
 	"api": {
 		"type": "openapi",
-		"url": "https://example.com/openapi.yaml"
+		"url": "gpt-plugin.kailamnyc.repl.co/openapi.yaml"
 	},
 	"logo_url": "https://example.com/logo.png",
 	"contact_email": "support@example.com",

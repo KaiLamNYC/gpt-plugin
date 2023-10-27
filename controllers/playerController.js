@@ -1,7 +1,9 @@
 const Player = require("../models/playerModel");
+const connectToMongoDB = require("../database/mongodb");
 
 async function fetchMyTeam(req, res) {
 	try {
+		connectToMongoDB();
 		const result = await Player.find({});
 
 		if (!result) {
@@ -26,6 +28,8 @@ async function fetchMyTeam(req, res) {
 
 async function createPlayer(req, res) {
 	try {
+		connectToMongoDB();
+
 		const { name } = req.body;
 
 		await Player.create({

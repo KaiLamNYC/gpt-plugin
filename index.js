@@ -13,9 +13,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //ROUTE FOR ACCESSING BALLDONTLIE API
-app.use("/api", apiRouter);
+app.use("/api/stats", apiRouter);
 //ROUTE FOR ACCESSING PLAYER ROUTE
-app.use("/player", playerRouter);
+app.use("/api/player", playerRouter);
 
 app.listen(PORT, () => {
 	console.log(`server running on port ${PORT}`);

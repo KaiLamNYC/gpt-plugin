@@ -6,6 +6,7 @@ const PORT = 3000;
 //ROUTER
 const apiRouter = require("./routes/apiRouter");
 const playerRouter = require("./routes/playerRouter");
+const yahooRouter = require("./routes/yahooRouter");
 
 app.use(logger("dev"));
 
@@ -16,6 +17,9 @@ app.use(express.json());
 app.use("/api/stats", apiRouter);
 //ROUTE FOR ACCESSING PLAYER ROUTE
 app.use("/api/player", playerRouter);
+
+//YAHOO ROUTER STUFF
+app.use("/yahoo", yahooRouter);
 
 app.listen(PORT, () => {
 	console.log(`server running on port ${PORT}`);

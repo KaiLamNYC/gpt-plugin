@@ -3,9 +3,16 @@ const axios = require("axios");
 require("dotenv").config();
 
 async function testFunction(req, res) {
-	res.json({
-		message: "hello world",
-	});
+	try {
+		res.json({
+			message: "hello world",
+		});
+	} catch (err) {
+		res.json({
+			message: "error",
+			payload: `error: ${err.message}`,
+		});
+	}
 }
 
 async function handleAuthCallback(req, res) {

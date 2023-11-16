@@ -4,11 +4,11 @@ require("dotenv").config();
 
 async function testFunction(req, res) {
 	try {
-		res.json({
+		return res.status(200).json({
 			message: "hello world",
 		});
 	} catch (err) {
-		res.json({
+		return res.status(500).json({
 			message: "error",
 			payload: `error: ${err.message}`,
 		});

@@ -47,7 +47,9 @@ async function handleAuthCallback(req, res) {
 		console.log("Access Token:", access_token);
 		console.log("Refresh Token:", refresh_token);
 
-		res.send("Tokens received and stored.");
+		res.send(
+			`ACCESS TOKEN: ${access_token} \n REFRESH TOKEN: ${refresh_token}`
+		);
 	} catch (error) {
 		console.error("Error exchanging authorization code for tokens:", error);
 		res.status(500).send("An error occurred.");
